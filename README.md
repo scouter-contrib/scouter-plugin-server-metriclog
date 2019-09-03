@@ -27,9 +27,15 @@ Refer to [pom.xml](./pom.xml)
 ### Build
  - mvn clean install
     
-### Deploy
+### Manual Deploy
  - target에 생성되는 scouter-plugin-server-metriclog-x.x.x.jar 와 target/lib에 생성되는 전체 library를 scouter sever의 lib 디렉토리에 저장하고 scouter server를 재시작한다
- 
+### Deploy
+ - Release 페이지에서 아래 두개의 파일을 선택하여 다운로드 한다. 
+    - dep-lib.tar.gz 
+    - scouter-plugin-server-metriclog-1.0.0.jar       
+ 1. tar xvf dep-lib.tar.gz 파일을 압축을 푼후 모든 (*.jar) 파일을  scouter sever의 lib 디렉토리에 저장 한다. 
+ 2. scouter-plugin-server-metriclog-1.0.0.jar scouter sever의 lib 디렉토리에 저장 한다. 
+ 3. 그리고 scouter server를 재시작한다. 
 ### Metric Define 
  - [메트릭 로깅 데이터 정의 설명서](https://docs.google.com/spreadsheets/d/1tNjMa-wgqn1QglF5QtNvPR5t4P1ovojLnjE25TixRl0/edit?usp=sharing) 
 ### Support Scouter Version
