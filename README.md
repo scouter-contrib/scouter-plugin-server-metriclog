@@ -1,4 +1,4 @@
-# scouter-plugin-server-elasticsearch
+# scouter-plugin-server-metriclog
 
                                               
 ![Korean](https://img.shields.io/badge/language-Korean-blue.svg)
