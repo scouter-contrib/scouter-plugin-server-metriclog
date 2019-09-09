@@ -115,7 +115,7 @@ public class FileLogRotate {
                 reData.put(get.getKey(),get.getValue());
             }
 
-            rebuild.put(Objects.equals(objFamily,"host") ? "system" : objFamily ,reData);
+            rebuild.put(objFamily ,reData);
             dataFile.println(this.obejctMapper.writeValueAsString(rebuild));
             dataFile.flush();
         }
