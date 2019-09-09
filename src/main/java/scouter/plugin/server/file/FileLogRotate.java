@@ -108,11 +108,13 @@ public class FileLogRotate {
             }
             // merge
             String objFamily= data.remove("objFamily").toString();
+
             Map<String,Object> reData = new LinkedHashMap<>();
             for(Map.Entry<String,Object> get: data.entrySet()){
                 reData.put(get.getKey(),get.getValue());
             }
-            rebuild.put(objFamily,reData);
+
+            rebuild.put(Objects.equals(objFamily,"host") ? "system" : objFamily ,reData);
             dataFile.println(this.obejctMapper.writeValueAsString(rebuild));
             dataFile.flush();
         }
