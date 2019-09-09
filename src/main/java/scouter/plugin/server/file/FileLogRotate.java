@@ -108,6 +108,7 @@ public class FileLogRotate {
             }
             // merge
             String objFamily= data.remove("objFamily").toString();
+            rebuild.put("objFamily",objFamily);
 
             Map<String,Object> reData = new LinkedHashMap<>();
             for(Map.Entry<String,Object> get: data.entrySet()){
