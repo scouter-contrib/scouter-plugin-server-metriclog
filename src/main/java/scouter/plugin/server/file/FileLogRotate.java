@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import scouter.server.Logger;
+import scouter.util.StringUtil;
 
 import java.io.*;
 import java.time.ZoneId;
@@ -92,10 +93,19 @@ public class FileLogRotate {
         }else{
             Map<String,Object> rebuild = new LinkedHashMap<>();
 
+            String name = data.remove("objName").toString();
+            String[] objName = StringUtil.split(name,"/");
+
             rebuild.put("startTime",data.get("startTime"));
-            rebuild.put("objName",data.remove("objName"));
+            rebuild.put("objName",name);
             rebuild.put("objHash",data.remove("objHash"));
             rebuild.put("objType",data.remove("objType"));
+            rebuild.put("objHost",objName[0]);
+            if(objName.length > 1){
+                rebuild.put("objId",objName[1]);
+            }else{
+                rebuild.put("objId",objName[0]);
+            }
             // merge
             String objFamily= data.remove("objFamily").toString();
             Map<String,Object> reData = new LinkedHashMap<>();
