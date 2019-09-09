@@ -90,7 +90,20 @@ public class FileLogRotate {
             dataFile.println(new ArrayList<>(data.values()).stream().map(Object::toString).collect(Collectors.joining(",")));
             dataFile.flush();
         }else{
-            dataFile.println(this.obejctMapper.writeValueAsString(data));
+            Map<String,Object> rebuild = new LinkedHashMap<>();
+
+            rebuild.put("startTime",data.get("startTime"));
+            rebuild.put("objName",data.remove("objName"));
+            rebuild.put("objHash",data.remove("objHash"));
+            rebuild.put("objType",data.remove("objType"));
+            // merge
+            String objFamily= data.remove("objFamily").toString();
+            Map<String,Object> reData = new LinkedHashMap<>();
+            for(Map.Entry<String,Object> get: data.entrySet()){
+                reData.put(get.getKey(),get.getValue());
+            }
+            rebuild.put(objFamily,reData);
+            dataFile.println(this.obejctMapper.writeValueAsString(rebuild));
             dataFile.flush();
         }
         this.lastTime = System.currentTimeMillis();

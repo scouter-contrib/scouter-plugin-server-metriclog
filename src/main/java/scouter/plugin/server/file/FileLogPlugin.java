@@ -192,8 +192,8 @@ public class FileLogPlugin {
 
             _source.put("objName",op.objName);
             _source.put("objHash",Hexa32.toString32(p.objHash));
-            _source.put("objType","tracing");
-            _source.put("objFamily","javaee");
+            _source.put("objType","java");
+            _source.put("objFamily","tracing");
 
             _source.put("startTime",this.dateTimeFormatter.format(new Date(p.endTime - p.elapsed).toInstant()));
             _source.put("endTime",this.dateTimeFormatter.format(new Date(p.endTime).toInstant()));
