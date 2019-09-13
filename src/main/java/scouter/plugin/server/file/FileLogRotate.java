@@ -95,6 +95,7 @@ public class FileLogRotate {
 
             String name = data.remove("objName").toString();
             String[] objName = StringUtil.split(name,"/");
+
             rebuild.put("server_id",data.remove("server_id"));
             rebuild.put("startTime",data.get("startTime"));
             rebuild.put("objName",name);
