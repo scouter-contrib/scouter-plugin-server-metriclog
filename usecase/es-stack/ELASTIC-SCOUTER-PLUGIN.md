@@ -1,6 +1,6 @@
 # Quick Install Guide 
  [![asciicast](https://asciinema.org/a/zYeOGkzJgpWXE2opasv5X0ytl.png)](https://asciinema.org/a/zYeOGkzJgpWXE2opasv5X0ytl)
- - 참고로 위 동영상은 docker을 활용한 설정으로 보안 설정은 제거 하고 실행 영상임       
+ - 참고로 위 동영상은 docker을 활용한 설정으로 보안 설정은 제거하고 실행한 영상       
   
 # 순서 
   1. 데이터 수집, 파이프 라인 구성, 색인, 맵핑 및 템플릿 
