@@ -1,0 +1,33 @@
+version: '3.2'
+services:
+ es:
+  image: sebp/elk:730
+  environment:
+   - LOGSTASH_START=0
+  ports:
+    - "5601:5601"
+    - "9200:9200" 
+ scouter:
+  image : scouterapm/scouter-server:2.7.0 
+  environment:
+   - SC_SERVER_ID=SC-3TB-COLLECTOR
+   - NET_HTTP_SERVER_ENABLED=true
+   - NET_HTTP_API_SWAGGER_ENABLED=true
+   - NET_HTTP_API_ENABLED=true
+   - MGR_PURGE_PROFILE_KEEP_DAYS=2
+   - MGR_PURGE_XLOG_KEEP_DAYS=5
+   - MGR_PURGE_COUNTER_KEEP_DAYS=15
+   - JAVA_OPT=-Xms1024m -Xmx1024m 
+   - ext_plugin_fl_enabled=true
+   - ext_plugin_fl_counter_duration_day=1
+   - ext_plugin_fl_xlog_duration_day=1
+   - ext_plugin_fl_extension=json
+  volumes:
+   - ./logs/sc-log:/home/scouter-server/logs
+   - ./logs/sc-data:/home/scouter-server/database
+   - ./logs/sc-metric:/home/scouter-server/ext_plugin_filelog
+   - ./plugin/scouter-plugin-server-metriclog-1.0.1.jar:/home/scouter-server/lib/scouter-plugin-server-metriclog-1.0.1.jar
+  ports:
+   - 6180:6180
+   - 6100:6100 
+   - 6100:6100/udp
