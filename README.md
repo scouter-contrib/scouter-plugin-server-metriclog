@@ -16,6 +16,8 @@
 * **ext_plugin_fl_rotate_dir** : Log를 Rotate 할 디렉토리명 (default : 스카우터 설치 홈/ext_plugin_filelog/rotate)
 * **ext_plugin_fl_extension** : Log 파일 확장자 명(default : json ,저장 내용은 라인피드 json 포맷으로 저장된다, 그외의 포맷은 CSV 형태로 저장함 )
 
+### 로깅을 이용한 연동 케이스 
+ - 1. [엘라스틱 스택을 활용한 데이터 연동](./usecase/es-stack/ELASTIC-SCOUTER-PLUGIN.md)
 
 ### dependencies
 Refer to [pom.xml](./pom.xml)
@@ -39,104 +41,140 @@ Refer to [pom.xml](./pom.xml)
 ### Metric Define 
  - [메트릭 로깅 데이터 정의 설명서](https://docs.google.com/spreadsheets/d/1tNjMa-wgqn1QglF5QtNvPR5t4P1ovojLnjE25TixRl0/edit?usp=sharing) 
 ### Support Scouter Version
- - 2.0.x 이상  
+ - 1.5.x 이상     
 ### 로깅 결과 샘플 
 ## 스카우터 시스템 모니터링 메트릭 샘플 ( scouter-counter-host.json)
+ - 2초 주기로 데이터 샘플링 발생 
 ```json
 ...
 {
-  "startTime": "20190904T110521.774+0900",
-  "objName": "/sc-api-demo-s02.localdomain",
-  "objHash": "x11uc3jm",
+
+  "startTime": "20190916T000006.910+0900",
+  "objName": "/sc-api-demo-m01.localdomain",
+  "server_id": "SCCOUTER-DEMO-COLLECTOR",
+  "objHash": "x1bjrpc2",
   "objType": "HOST-ScouterDemo",
+  "objHost": "sc-api-demo-m01.localdomain",
+  "objId": "sc-api-demo-m01.localdomain",
   "objFamily": "host",
-  "MemA": 342,
-  "TcpStatEST": 21,
-  "DiskReadBytes": 0,
-  "DiskWriteBytes": 45056,
-  "TcpStatTIM": 32,
-  "UserCpu": 0.8020151,
-  "NetRxBytes": 13170,
-  "PageIn": 0,
-  "NetOutBound": 18,
-  "TcpStatFIN": 0,
-  "SysCpu": 0.3,
-  "NetTxBytes": 13847,
-  "TcpStatCLS": 1,
-  "MemU": 647,
-  "Mem": 65.37895,
-  "MemT": 990,
-  "Cpu": 1.2020152,
-  "PageOut": 0,
-  "Swap": 0,
-  "SwapU": 0,
-  "SwapT": 0,
-  "NetInBound": 37
+  "host": {
+    "startTime": "20190916T000006.910+0900",
+    "MemA": 542,
+    "TcpStatEST": 62,
+    "DiskReadBytes": 510361,
+    "DiskWriteBytes": 2202419,
+    "TcpStatTIM": 55,
+    "UserCpu": 4.178249,
+    "NetRxBytes": 57551,
+    "PageIn": 0,
+    "NetOutBound": 47,
+    "TcpStatFIN": 0,
+    "SysCpu": 1.7644106,
+    "NetTxBytes": 11341,
+    "TcpStatCLS": 0,
+    "MemU": 1460,
+    "Mem": 72.89831,
+    "MemT": 2003,
+    "Cpu": 21.120062,
+    "PageOut": 0,
+    "Swap": 0,
+    "SwapU": 0,
+    "SwapT": 0,
+    "NetInBound": 72
 }
 ...
 ```
 ## 스카우터 자바 모니터링 메트릭 샘플 ( scouter-counter-javaee.json)
+ - 2초 주기로 데이터 샘플링 발생
 ```json
 ...
 {
-  "startTime": "20190904T110521.644+0900",
-  "objName": "/sc-api-demo-s01.localdomain/another-web",
-  "objHash": "x176ir0j",
-  "objType": "ScouterAnotherDemoJava",
+  "startTime": "20190916T000002.388+0900",
+  "objName": "/sc-api-demo-s01.localdomain/sampleweb",
+  "server_id": "SCCOUTER-DEMO-COLLECTOR",
+  "objHash": "z1cp362a",
+  "objType": "ScouterDemoJava",
+  "objHost": "sc-api-demo-s01.localdomain",
+  "objId": "sampleweb",
   "objFamily": "javaee",
-  "ElapsedTime": 725,
-  "ServiceCount": 217,
-  "Elapsed90%": 1874,
-  "RecentUser": 5,
-  "ApiTime": 496,
-  "ErrorRate": 6.8627453,
-  "QueuingTime": 0,
-  "GcCount": 0,
-  "SqlErrorRate": 1.6666666,
-  "GcTime": 0,
-  "PermUsed": 63.24852,
-  "SqlTime": 6,
-  "ApiErrorRate": 2.631579,
-  "SqlTPS": 6,
-  "ApiTimeByService": 191,
-  "HeapTotal": 111.69531,
-  "HeapUsed": 69.89433,
-  "TPS": 3.4,
-  "ActiveService": 3,
-  "ApiTPS": 1.2666667,
-  "SqlTimeByService": 11
+  "javaee": {
+    "startTime": "20190916T000002.388+0900",
+    "ElapsedTime": 707,
+    "ServiceCount": 197,
+    "Elapsed90%": 1990,
+    "RecentUser": 5,
+    "ApiTime": 244,
+    "ErrorRate": 5.319149,
+    "QueuingTime": 0,
+    "GcCount": 1,
+    "SqlErrorRate": 1.7241379,
+    "GcTime": 4,
+    "PermUsed": 63.346184,
+    "SqlTime": 4,
+    "ApiErrorRate": 0,
+    "SqlTPS": 5.8,
+    "ApiTimeByService": 103,
+    "HeapTotal": 111.609375,
+    "HeapUsed": 58.349815,
+    "TPS": 3.1333334,
+    "ActiveService": 4,
+    "ApiTPS": 1.3333334,
+    "SqlTimeByService": 9
+  }
+}
+...
+{
+  "startTime": "20190916T000002.907+0900",
+  "objName": "/sc-api-demo-m01.localdomain/sampleweb",
+  "server_id": "SCCOUTER-DEMO-COLLECTOR",
+  "objHash": "z135cg1n",
+  "objType": "ScouterDemoJava",
+  "objHost": "sc-api-demo-m01.localdomain",
+  "objId": "sampleweb",
+  "objFamily": "javaee",
+  "javaee": {
+    "startTime": "20190916T000002.907+0900",
+    "ProcCpu": 1.4985023
+  }
 }
 ...
 ```
 ## 스카우터 XLOG 메트릭 샘플( scouter-counter-xlog.json)
+ - XLOG : XLOG 수신 후 즉시 발생  
 ```json
 ...
 {
+  "startTime": "20190916T000000.433+0900",
   "objName": "/sc-api-demo-m01.localdomain/sampleweb",
+  "server_id": "SCCOUTER-DEMO-COLLECTOR",
   "objHash": "z135cg1n",
-  "objType": "tracing",
-  "objFamily": "javaee",
-  "startTime": "20190904T110521.798+0900",
-  "endTime": "20190904T110521.800+0900",
-  "startTimeEpoch": 1567562721798,
-  "endTimeEpoch": 1567562721800,
-  "serviceName": "/error",
-  "threadName": "http-nio-8080-exec-9",
-  "gxId": "0",
-  "txId": "z1s3e3prvmld37",
-  "caller": "0",
-  "elapsed": 2,
-  "error": 0,
-  "cpu": 0,
-  "sqlCount": 0,
-  "sqlTime": 0,
-  "ipAddr": "127.0.0.1",
-  "allocMemory": 53,
-  "userAgent": "unirest-java/1.3.11",
-  "referrer": "",
-  "group": "/**",
-  "apiCallCount": 0,
-  "apiCallTime": 0
+  "objType": "java",
+  "objHost": "sc-api-demo-m01.localdomain",
+  "objId": "sampleweb",
+  "objFamily": "tracing",
+  "tracing": {
+    "startTime": "20190916T000000.433+0900",
+    "endTime": "20190916T000000.433+0900",
+    "startTimeEpoch": 1568559600433,
+    "endTimeEpoch": 1568559600433,
+    "serviceName": "/error",
+    "threadName": "http-nio-8080-exec-7",
+    "gxId": "0",
+    "txId": "x55btfu4dcsa5k",
+    "caller": "0",
+    "elapsed": 0,
+    "error": 0,
+    "cpu": 0,
+    "sqlCount": 0,
+    "sqlTime": 0,
+    "ipAddr": "127.0.0.1",
+    "allocMemory": 53,
+    "userAgent": "unirest-java/1.3.11",
+    "referrer": "",
+    "group": "/**",
+    "apiCallCount": 0,
+    "apiCallTime": 0
+  }
 }
 ...
 ```

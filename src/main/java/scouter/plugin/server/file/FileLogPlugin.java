@@ -134,6 +134,7 @@ public class FileLogPlugin {
 
             Map<String, Value> dataMap = pack.data.toMap();
             Map<String,Object> _source = new LinkedHashMap<>();
+            _source.put("server_id",this.conf.server_id);
             _source.put("startTime", this.dateTimeFormatter.format(new Date(pack.time).toInstant()));
             _source.put("objName",op.objName);
             _source.put("objHash",Hexa32.toString32(objHash));
@@ -189,11 +190,11 @@ public class FileLogPlugin {
             if(Objects.isNull(op)){
                 return;
             }
-
+            _source.put("server_id",this.conf.server_id);
             _source.put("objName",op.objName);
             _source.put("objHash",Hexa32.toString32(p.objHash));
-            _source.put("objType","tracing");
-            _source.put("objFamily","javaee");
+            _source.put("objType","java");
+            _source.put("objFamily","tracing");
 
             _source.put("startTime",this.dateTimeFormatter.format(new Date(p.endTime - p.elapsed).toInstant()));
             _source.put("endTime",this.dateTimeFormatter.format(new Date(p.endTime).toInstant()));

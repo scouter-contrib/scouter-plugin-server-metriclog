@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import scouter.server.Logger;
+import scouter.util.StringUtil;
 
 import java.io.*;
 import java.time.ZoneId;
@@ -90,7 +91,33 @@ public class FileLogRotate {
             dataFile.println(new ArrayList<>(data.values()).stream().map(Object::toString).collect(Collectors.joining(",")));
             dataFile.flush();
         }else{
-            dataFile.println(this.obejctMapper.writeValueAsString(data));
+            Map<String,Object> rebuild = new LinkedHashMap<>();
+
+            String name = data.remove("objName").toString();
+            String[] objName = StringUtil.split(name,"/");
+
+            rebuild.put("server_id",data.remove("server_id"));
+            rebuild.put("startTime",data.get("startTime"));
+            rebuild.put("objName",name);
+            rebuild.put("objHash",data.remove("objHash"));
+            rebuild.put("objType",data.remove("objType"));
+            rebuild.put("objHost",objName[0]);
+            if(objName.length > 1){
+                rebuild.put("objId",objName[1]);
+            }else{
+                rebuild.put("objId",objName[0]);
+            }
+            // merge
+            String objFamily= data.remove("objFamily").toString();
+            rebuild.put("objFamily",objFamily);
+
+            Map<String,Object> reData = new LinkedHashMap<>();
+            for(Map.Entry<String,Object> get: data.entrySet()){
+                reData.put(get.getKey(),get.getValue());
+            }
+
+            rebuild.put(objFamily ,reData);
+            dataFile.println(this.obejctMapper.writeValueAsString(rebuild));
             dataFile.flush();
         }
         this.lastTime = System.currentTimeMillis();

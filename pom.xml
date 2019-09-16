@@ -4,7 +4,7 @@
 
     <groupId>scouter.plugin.server</groupId>
     <artifactId>scouter-plugin-server-metriclog</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>scouter-plugin-server-metriclog</name>

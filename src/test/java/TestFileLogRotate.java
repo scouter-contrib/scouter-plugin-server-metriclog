@@ -5,6 +5,7 @@ import org.junit.Test;
 import scouter.plugin.server.file.FileLogRotate;
 import scouter.util.DateTimeHelper;
 import scouter.util.DateUtil;
+import scouter.util.StringUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,5 +64,11 @@ public class TestFileLogRotate {
 //        Assert.assertEquals("pom.xml", name);
         Assert.assertEquals(true,find.matches("^scouter-counter.+?"));
 
+    }
+    @Test
+    public void testSplit(){
+        String[] split = StringUtil.split("/GIOT-WEB-SV01/kranian/23klkjd", "/");
+        Assert.assertEquals(split[0],"GIOT-WEB-SV01");
+        Assert.assertEquals(split[1],"kranian");
     }
 }
