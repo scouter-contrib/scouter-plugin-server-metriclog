@@ -387,15 +387,6 @@
           },
           "startTimeEpoch": {
             "type": "long"
-          },
-          "threadName": {
-            "type": "keyword"
-          },
-          "txId": {
-            "type": "keyword"
-          },
-          "userAgent": {
-            "type": "keyword"
           }
         }
       }
