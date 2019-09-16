@@ -17,7 +17,7 @@
 * **ext_plugin_fl_extension** : Log 파일 확장자 명(default : json ,저장 내용은 라인피드 json 포맷으로 저장된다, 그외의 포맷은 CSV 형태로 저장함 )
 
 ### 로깅을 이용한 연동 케이스 
- - 1. [엘라스틱 스택을 활용한 데이터 연동](./usecase/es-stack/ELASTIC-SCOUTER-PLUGIN.md)
+ - [엘라스틱 스택을 활용한 데이터 연동](./usecase/es-stack/ELASTIC-SCOUTER-PLUGIN.md)
 
 ### dependencies
 Refer to [pom.xml](./pom.xml)
