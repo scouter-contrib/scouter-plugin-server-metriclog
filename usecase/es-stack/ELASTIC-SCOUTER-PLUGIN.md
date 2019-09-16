@@ -18,7 +18,7 @@
   Filebeat를 scouter-plugin-server-metriclog/usecase/es-stack 경로에 다운로드 후 압축을 풉다. 
   
   ```
-  filebeat-*/bin/filebeat -e -c config/filebeat.yml -d pulish 
+  filebeat-*/filebeat -e -c config/filebeat.yml -d pulish 
   ```
 ### 4.FileBeat 로그 수신 후 Logstash에서 Elasticsearch로 색인      
   Logstash 설정은 [config/scouter-metric-log.conf](./config/scouter-metric-log.conf) 파일을 참조한다.

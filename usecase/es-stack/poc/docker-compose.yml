@@ -10,7 +10,7 @@ services:
  scouter:
   image : scouterapm/scouter-server:2.7.0 
   environment:
-   - SC_SERVER_ID=SC-3TB-COLLECTOR
+   - SC_SERVER_ID=SC-POC-COLLECTOR
    - NET_HTTP_SERVER_ENABLED=true
    - NET_HTTP_API_SWAGGER_ENABLED=true
    - NET_HTTP_API_ENABLED=true
