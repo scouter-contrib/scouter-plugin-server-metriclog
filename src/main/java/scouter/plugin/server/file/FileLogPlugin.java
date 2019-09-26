@@ -211,7 +211,7 @@ public class FileLogPlugin {
             _source.put("caller",Hexa32.toString32(p.caller));
 
             _source.put("elapsed",p.elapsed);
-            _source.put("error",p.error);
+            _source.put("error",this.getString(helper.getErrorString(p.error)));
             _source.put("cpu",p.cpu);
             _source.put("sqlCount",p.sqlCount);
             _source.put("sqlTime",p.sqlTime);

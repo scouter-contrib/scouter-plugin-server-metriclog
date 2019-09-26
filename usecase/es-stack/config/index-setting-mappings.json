@@ -370,7 +370,7 @@
             "type": "long"
           },
           "error": {
-            "type": "integer"
+            "type": "keyword"
           },
           "ipAddr": {
             "type": "ip"
