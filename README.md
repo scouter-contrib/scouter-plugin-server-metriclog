@@ -18,10 +18,12 @@
 
 ### 로깅을 이용한 연동 케이스 
  - [엘라스틱 스택을 활용한 데이터 연동문서](./usecase/es-stack/ELASTIC-SCOUTER-PLUGIN.md)
- - 엘라스틱 스택 연동 바로 시작하기 
+    - 엘라스틱 스택 연동 바로 시작하기 
 [![asciicast](https://asciinema.org/a/zYeOGkzJgpWXE2opasv5X0ytl.png)](https://asciinema.org/a/zYeOGkzJgpWXE2opasv5X0ytl)  
- - 세팅 완료 후 http://localhost:5601 
- 
+  
+ - [filebeat-scouter-module](https://github.com/eskrug/filebeat-scouter-module)
+    - filbeat 스카우터 메트릭 로그 모듈 기반 엘라스틱 스택 연동 프로젝트 
+         
 ### dependencies
 Refer to [pom.xml](./pom.xml)
 
@@ -48,7 +50,7 @@ Refer to [pom.xml](./pom.xml)
 ### 로깅 결과 샘플 
 ## 스카우터 시스템 모니터링 메트릭 샘플 ( scouter-counter-host.json)
  - 2초 주기로 데이터 샘플링 발생 
-```json
+```
 ...
 {
 
@@ -89,7 +91,7 @@ Refer to [pom.xml](./pom.xml)
 ```
 ## 스카우터 자바 모니터링 메트릭 샘플 ( scouter-counter-javaee.json)
  - 2초 주기로 데이터 샘플링 발생
-```json
+```
 ...
 {
   "startTime": "20190916T000002.388+0900",
@@ -144,7 +146,7 @@ Refer to [pom.xml](./pom.xml)
 ```
 ## 스카우터 XLOG 메트릭 샘플( scouter-counter-xlog.json)
  - XLOG : XLOG 수신 후 즉시 발생  
-```json
+```
 ...
 {
   "startTime": "20190916T000000.433+0900",
